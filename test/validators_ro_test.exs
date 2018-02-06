@@ -21,6 +21,11 @@ defmodule ValidatorsRoTest do
   test "invalid CIFs" do
     assert @invalid_cifs |> Enum.all?(&(!valid_cif? &1))
   end
+  test "CIF stream" do
+    from = 100_000
+    valid = from..150_000 |> Enum.filter(&valid_cif?/1)
+    assert valid === cif_stream(from) |> Enum.take((valid |> length))
+  end
 
   test "valid CNPs" do
     assert @valid_cnps |> Enum.all?(&(valid_cnp? &1))
