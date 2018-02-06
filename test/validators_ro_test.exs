@@ -10,7 +10,7 @@ defmodule ValidatorsRoTest do
   @invalid_cnps ~w(123456789 12 0 111111 1234567891234)
 
   @valid_ibans File.stream!("test/data/valid_ibans.txt")
-  @invalid_ibans ~w(1 foo 123 999 ROBTRLSTUFFFOO)
+  @invalid_ibans ~w(foo 123 999 ROBTRLSTUFFFOO)
 
   @valid_bics File.stream!("test/data/valid_bics.txt")
   @invalid_bics File.stream!("test/data/invalid_bics.txt")
@@ -33,11 +33,11 @@ defmodule ValidatorsRoTest do
     assert @valid_ibans |> Enum.all?(&(valid_iban? &1))
   end
   test "invalid IBANs" do
-    assert @valid_ibans |> Enum.all?(&(valid_iban? &1))
+    assert @invalid_ibans |> Enum.all?(&(!valid_iban? &1))
   end
 
   test "invalid BICs" do
-    assert @invalid_cifs |> Enum.all?(&(!valid_bic? &1))
+    assert @invalid_bics |> Enum.all?(&(!valid_bic? &1))
   end
   test "valid BICs" do
     assert @valid_bics |> Enum.all?(&(valid_bic? &1))
