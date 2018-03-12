@@ -127,10 +127,10 @@ defmodule ValidatorsRo.CNP do
               foreign: foreign
             }
           else
-            %{}
+            nil
           end
 
-        Map.put(parsed, :valid, valid)
+        %{parsed: parsed, valid: valid}
       end
 
         defp cnp_well_formed?(cnp) do

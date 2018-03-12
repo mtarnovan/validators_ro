@@ -40,13 +40,15 @@ defmodule ValidatorsRoTest do
   test "parse CNPs" do
     cnp = "1901222053823"
     expected = %{
-      county_of_birth: "Bihor",
-      county_of_birth_code: "05",
-      date_of_birth: "1990-12-22",
-      foreign: false,
-      sex: "male",
-      county_index: "382",
-      control: "3",
+      parsed: %{
+        county_of_birth: "Bihor",
+        county_of_birth_code: "05",
+        date_of_birth: "1990-12-22",
+        foreign: false,
+        sex: "male",
+        county_index: "382",
+        control: "3"
+      },
       valid: true
     }
     assert expected === parse_cnp(cnp)
