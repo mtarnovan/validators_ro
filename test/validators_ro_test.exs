@@ -44,8 +44,8 @@ defmodule ValidatorsRoTest do
         county_of_birth: "Bihor",
         county_of_birth_code: "05",
         date_of_birth: "1990-12-22",
-        foreign: false,
-        sex: "male",
+        foreign_resident: false,
+        sex: "m",
         county_index: "382",
         control: "3"
       },

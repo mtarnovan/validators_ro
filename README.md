@@ -28,8 +28,8 @@ iex> valid_cnp?("1920822296090")
 true
 iex> parse_cnp("1920822296090")
 %{parsed: %{control: "0", county_index: "609", county_of_birth: "Prahova",
-    county_of_birth_code: "29", date_of_birth: "1992-08-22", foreign: false,
-    sex: "male"}, valid: true}
+    county_of_birth_code: "29", date_of_birth: "1992-08-22", foreign_resident: false,
+    sex: "m"}, valid: true}
 iex> valid_iban?("RO56TREZ0462107020101XXX")
 true
 iex> valid_bic?("RZTIAT22263")

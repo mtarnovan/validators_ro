@@ -70,6 +70,10 @@ defmodule ValidatorsRo.CNP do
         "51" =>	"Călărași",
         "52" =>	"Giurgiu"
       }
+      @cnp_sex_map %{
+        :odd => "m",
+        :even => "f"
+      }
 
       @doc """
       Provides validation of Romanian CNPs (equivalent of SSNs)
@@ -84,13 +88,13 @@ defmodule ValidatorsRo.CNP do
       @doc """
       Parses a CNP into a map of parts, with the following keys:
         * `:valid` (boolean)
-        * `:sex`, a string of either "male" or "female"
+        * `:sex`, a string of either "m" or "f"
         * `:date_of_birth`, as a string representation in ISO8601 format (YYYY-MM-DD)
         * `:county of birth` - a string representing the Romanian name of
-        the county of birth. `nil` if `:foreign` is true
+        the county of birth. `nil` if `:foreign_resident` is true
         * `:per_county_index` - a numeric string between 001 - 999, see Wikipedia entry for details
         * `:control` - a single digit control
-        * `:foreign` (boolean), indicating person is a foreign national
+        * `:foreign_resident` (boolean), indicating person is a foreign national
 
       For invalid CNPs, no parsing is attempted and only `:valid` is returned.
       """
@@ -107,9 +111,9 @@ defmodule ValidatorsRo.CNP do
               <<control::bytes-size(1)>> = cnp
 
             sex_code = sex_code |> String.to_integer()
-            sex = if Integer.is_odd(sex_code) do "male" else "female" end
+            sex = if Integer.is_odd(sex_code) do @cnp_sex_map.odd else @cnp_sex_map.even end
 
-            foreign = sex_code in [7, 8]
+            foreign_resident = sex_code in [7, 8]
 
             date_of_birth =
               case sex_code do
@@ -124,7 +128,7 @@ defmodule ValidatorsRo.CNP do
               county_of_birth: @cnp_county_map[county_of_birth_code],
               county_index: county_index,
               control: control,
-              foreign: foreign
+              foreign_resident: foreign_resident
             }
           else
             nil
