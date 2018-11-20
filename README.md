@@ -1,10 +1,10 @@
-# Validators for Romanian CIF, CNP and IBAN
+# Validators for Romanian CIF, CNP and IBAN [![Build Status](https://travis-ci.org/mtarnovan/validators_ro.svg?branch=master)](https://travis-ci.org/mtarnovan/validators_ro)
 
 <!-- MDOC !-->
 
 An [Elixir](https://elixir-lang.org/) collection of validators
 and utilities around Romanian identifiers, extracted from [openapi.ro](https://openapi.ro),
-business APIs for Romanian developers. [![Build Status](https://travis-ci.org/mtarnovan/validators_ro.svg?branch=master)](https://travis-ci.org/mtarnovan/validators_ro)
+business APIs for Romanian developers. 
 
 * CNP https://ro.wikipedia.org/wiki/Cod_numeric_personal (roughly equivalent of American SSN)
 * CIF https://ro.wikipedia.org/wiki/Cod_de_Identificare_Fiscal%C4%83 (roughly equivalent of American EIN)
