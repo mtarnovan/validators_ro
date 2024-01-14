@@ -1,4 +1,6 @@
-# Validators for Romanian CIF, CNP and IBAN [![Build Status](https://travis-ci.org/mtarnovan/validators_ro.svg?branch=master)](https://travis-ci.org/mtarnovan/validators_ro)
+# Validators for Romanian CIF, CNP and IBAN
+
+![CI status](https://github.com/mtarnovan/validators_ro/actions/workflows/elixir.yml/badge.svg?branch=master)
 
 ![CI status](https://github.com/mtarnovan/validators_ro/actions/workflows/elixir.yml/badge.svg?branch=master)
 
