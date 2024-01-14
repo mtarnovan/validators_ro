@@ -1,4 +1,4 @@
-# Validators for Romanian CIF, CNP and IBAN [![Build Status](https://travis-ci.org/mtarnovan/validators_ro.svg?branch=master)](https://travis-ci.org/mtarnovan/validators_ro)
+# Validators for Romanian CIF, CNP and IBAN
 
 <!-- MDOC !-->
 
