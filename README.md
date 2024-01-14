@@ -2,8 +2,6 @@
 
 ![CI status](https://github.com/mtarnovan/validators_ro/actions/workflows/elixir.yml/badge.svg?branch=master)
 
-![CI status](https://github.com/mtarnovan/validators_ro/actions/workflows/elixir.yml/badge.svg?branch=master)
-
 <!-- MDOC !-->
 
 An [Elixir](https://elixir-lang.org/) collection of validators and utilities
