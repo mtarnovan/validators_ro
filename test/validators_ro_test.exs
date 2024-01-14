@@ -16,29 +16,30 @@ defmodule ValidatorsRoTest do
   @invalid_bics File.stream!("test/data/invalid_bics.txt")
 
   test "valid CIFs" do
-    assert @valid_cifs |> Enum.all?(&(valid_cif? &1))
+    assert @valid_cifs |> Enum.all?(&valid_cif?(&1))
   end
 
   test "invalid CIFs" do
-    assert @invalid_cifs |> Enum.all?(&(!valid_cif? &1))
+    assert @invalid_cifs |> Enum.all?(&(!valid_cif?(&1)))
   end
 
   test "CIF stream" do
     from = 100_000
     valid = from..150_000 |> Enum.filter(&valid_cif?/1)
-    assert valid === from |> cif_stream |> Enum.take((valid |> length))
+    assert valid === from |> cif_stream |> Enum.take(valid |> length)
   end
 
   test "valid CNPs" do
-    assert @valid_cnps |> Enum.all?(&(valid_cnp? &1))
+    assert @valid_cnps |> Enum.all?(&valid_cnp?(&1))
   end
 
   test "invalid CNPs" do
-    assert @invalid_cnps |> Enum.all?(&(!valid_cnp? &1))
+    assert @invalid_cnps |> Enum.all?(&(!valid_cnp?(&1)))
   end
 
   test "parse CNPs" do
     cnp = "1901222053823"
+
     expected = %{
       parsed: %{
         county_of_birth: "Bihor",
@@ -51,22 +52,23 @@ defmodule ValidatorsRoTest do
       },
       valid: true
     }
+
     assert expected === parse_cnp(cnp)
   end
 
   test "valid IBANs" do
-    assert @valid_ibans |> Enum.all?(&(valid_iban? &1))
+    assert @valid_ibans |> Enum.all?(&valid_iban?(&1))
   end
 
   test "invalid IBANs" do
-    assert @invalid_ibans |> Enum.all?(&(!valid_iban? &1))
+    assert @invalid_ibans |> Enum.all?(&(!valid_iban?(&1)))
   end
 
   test "invalid BICs" do
-    assert @invalid_bics |> Enum.all?(&(!valid_bic? &1))
+    assert @invalid_bics |> Enum.all?(&(!valid_bic?(&1)))
   end
 
   test "valid BICs" do
-    assert @valid_bics |> Enum.all?(&(valid_bic? &1))
+    assert @valid_bics |> Enum.all?(&valid_bic?(&1))
   end
 end
