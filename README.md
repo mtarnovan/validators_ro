@@ -2,16 +2,18 @@
 
 <!-- MDOC !-->
 
-An [Elixir](https://elixir-lang.org/) collection of validators
-and utilities around Romanian identifiers, extracted from [openapi.ro](https://openapi.ro),
-business APIs for Romanian developers. 
+An [Elixir](https://elixir-lang.org/) collection of validators and utilities
+around Romanian identifiers, extracted from [openapi.ro](https://openapi.ro),
+business APIs for Romanian developers.
 
-* CNP https://ro.wikipedia.org/wiki/Cod_numeric_personal (roughly equivalent of American SSN)
-* CIF https://ro.wikipedia.org/wiki/Cod_de_Identificare_Fiscal%C4%83 (roughly equivalent of American EIN)
+* CNP https://ro.wikipedia.org/wiki/Cod_numeric_personal (roughly equivalent of
+  American Social Security Number SSN)
+* CIF https://ro.wikipedia.org/wiki/Cod_de_Identificare_Fiscal%C4%83 (roughly
+  equivalent of American Employer Identification Number EIN)
 * IBAN http://www.bnr.ro/files/d/Legislatie/EN/Reg_IBAN.pdf
 
-Please note that IBAN validation is implemented per BNR
-specification and might not work for international IBANs.
+Please note that IBAN validation is implemented per BNR specification and might
+not work for international IBANs.
 
 For each identifier a `valid_#{identifier}?` function is provided.
 
@@ -21,21 +23,21 @@ Additionaly:
 
 ## Examples
 ```elixir
-iex> import ValidatorsRo
-iex> valid_cif?("13548146")
-true
-iex> valid_cnp?("1920822296090")
-true
-iex> parse_cnp("1920822296090")
-%{parsed: %{control: "0", county_index: "609", county_of_birth: "Prahova",
-    county_of_birth_code: "29", date_of_birth: "1992-08-22", foreign_resident: false,
-    sex: "m"}, valid: true}
-iex> valid_iban?("RO56TREZ0462107020101XXX")
-true
-iex> valid_bic?("RZTIAT22263")
-true
-iex> cif_stream(10_000) |> Enum.take(10)
-[10004, 10012, 10020, 10039, 10047, 10055, 10063, 10071, 10080, 10098]
+    iex> import ValidatorsRo
+    iex> valid_cif?("13548146")
+    true
+    iex> valid_cnp?("1920822296090")
+    true
+    iex> parse_cnp("1920822296090")
+    %{parsed: %{control: "0", county_index: "609", county_of_birth: "Prahova",
+        county_of_birth_code: "29", date_of_birth: "1992-08-22", foreign_resident: false,
+        sex: "m"}, valid: true}
+    iex> valid_iban?("RO56TREZ0462107020101XXX")
+    true
+    iex> valid_bic?("RZTIAT22263")
+    true
+    iex> cif_stream(10_000) |> Enum.take(10)
+    [10004, 10012, 10020, 10039, 10047, 10055, 10063, 10071, 10080, 10098]
 ```
 <!-- MDOC !-->
 
